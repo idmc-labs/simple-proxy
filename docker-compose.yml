@@ -2,9 +2,12 @@ version: '3.2'
 
 services:
   nginx-proxy:
-    image: thenav56/nginx-proxy:latest
-    build: ./
+    image: nginx:latest
     env_file:
-        - .env
+       - .env
+    volumes:
+      - ./proxy-template.conf:/etc/nginx/templates/default.conf.template:ro
+    environment:
+      - SOURCE_PROTOCOL=${SOURCE_PROTOCOL:-https}
     ports:
-      - "8001:80"
+      - "${DESTINATION_PORT:-8001}:80"
