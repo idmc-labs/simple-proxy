@@ -6,9 +6,6 @@ services:
     env_file:
        - .env
     volumes:
-      - ./proxy-template.conf:/etc/nginx/templates/default.conf.template:ro
-      - ./common.conf:/etc/nginx/templates/common.conf.template:ro
-    environment:
-      - SOURCE_PROTOCOL=${SOURCE_PROTOCOL:-https}
+      - ./templates:/etc/nginx/templates:ro
     ports:
       - "${DESTINATION_PORT:-8001}:80"

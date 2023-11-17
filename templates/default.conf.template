@@ -4,6 +4,6 @@ server {
     location / {
         proxy_pass $SOURCE_PROTOCOL://$SOURCE_DOMAIN;
         proxy_set_header Host              $SOURCE_DOMAIN;
-        include /etc/nginx/templates/common.conf.template;
+        include /etc/nginx/templates/proxy.conf;
     }
 }
