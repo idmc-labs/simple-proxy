@@ -1,9 +1,29 @@
 server {
-    listen 80;
+    listen 8001;
 
     location / {
-        proxy_pass $SOURCE_PROTOCOL://$SOURCE_DOMAIN;
-        proxy_set_header Host              $SOURCE_DOMAIN;
+        proxy_pass https://helix-tools-api-staging.idmcdb.org;
+        proxy_set_header Host helix-tools-api-staging.idmcdb.org;
+        include /etc/nginx/templates/proxy.conf;
+    }
+}
+
+server {
+    listen 8002;
+
+    location / {
+        proxy_pass https://website-api.idmcdb.org;
+        proxy_set_header Host website-api.idmcdb.org;
+        include /etc/nginx/templates/proxy.conf;
+    }
+}
+
+server {
+    listen 8003;
+
+    location / {
+        proxy_pass https://www.internal-displacement.org;
+        proxy_set_header Host www.internal-displacement.org;
         include /etc/nginx/templates/proxy.conf;
     }
 }

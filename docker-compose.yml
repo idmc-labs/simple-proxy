@@ -3,9 +3,9 @@ version: '3.2'
 services:
   nginx-proxy:
     image: nginx:latest
-    env_file:
-       - .env
     volumes:
       - ./templates:/etc/nginx/templates:ro
     ports:
-      - "${DESTINATION_PORT:-8001}:80"
+      - "8001:8001"
+      - "8002:8002"
+      - "8003:8003"
