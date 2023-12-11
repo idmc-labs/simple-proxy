@@ -16,5 +16,5 @@ We are running 3 proxy servers:
 - Drupal Server on port 8003
 This has been configured in ./templates/default.conf.template
 
-We are expecting the client to run on 3001
+We are expecting the client to run on 3000
 This has been configured in ./templates/proxy.conf.template
